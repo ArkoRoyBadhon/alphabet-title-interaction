@@ -32,7 +32,7 @@ function App() {
   ];
 
   const [store, setStore] = useState([]);
-  const [output, setOutput] = useState([]);
+  const [outputString, setOutputString] = useState([]);
   const [letterCount, setLetterCount] = useState({
     letter: "",
     count: 0,
@@ -53,21 +53,21 @@ function App() {
     }
 
     if (letterCount.letter === alpha && letterCount.count === 2) {
-      output.pop();
-      output.pop();
-      setOutput([...output, "_"]);
+      outputString.pop();
+      outputString.pop();
+      setOutputString([...outputString, "_"]);
       setLetterCount({
         letter: "",
         count: 0,
       });
     } else {
-      setOutput([...output, alpha]);
+      setOutputString([...outputString, alpha]);
     }
   };
 
   const handleClear = () => {
     setStore([]);
-    setOutput([]);
+    setOutputString([]);
     setLetterCount({
       letter: "",
       count: 0,
@@ -83,15 +83,15 @@ function App() {
       <div className="flex gap-[20px] my-[20px]">
         <div className="w-4/5 mx-auto ">
           <div className="flex h-[200px] border  rounded-lg shadow-lg p-5 mb-[20px]">
-            {output.map((alpha, i) => {
+            {outputString.map((alpha, i) => {
               return (
-                <div key={i} className="">
+                <div id="outputString" key={i} className="">
                   {alpha}
                 </div>
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-[20px]  w-[600px]  mx-auto">
+          <div className="grid grid-cols-10 gap-[20px]  w-[600px]  mx-auto">
         {alphabets.map((alpha, i) => {
           return (
             <div
